@@ -1,5 +1,5 @@
 # Trabalho de Física
- codado em Java - Cap 3
+ codado em Java - Cap 3 Ex 62
 
  import javax.swing.*;
 import java.awt.*;
