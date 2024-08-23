@@ -1,36 +1,26 @@
 public class TrabalhoFisica2 {
 
     public static void main(String[] args) {
-        // Constantes
         double lambida = 9.0e-9; // Densidade linear de carga em C/m
         double epsilon0 = 8.85e-12; // Permissividade do vácuo em C^2/(N·m^2)
         double xPonto = 4.0; // Ponto onde queremos calcular o campo elétrico em metros
         double xIni = 0.0; // Início da corda (em metros)
         double xFim = 3.0; // Fim da corda (em metros)
 
-        // Calculando o campo elétrico
         double campoEletrico = calcularCampoEletrico(lambida, epsilon0, xPonto, xIni, xFim);
-
-        // Exibindo o resultado
         System.out.printf("O módulo do campo elétrico no ponto x = %.1f m é de %.2f N/C\n", xPonto, campoEletrico);
     }
-
     public static double calcularCampoEletrico(double lambida, double epsilon0, double xPonto, double xIni, double xFim) {
         double k = 1 / (4 * Math.PI * epsilon0); // Constante k
         double integral = 0.0; // Inicialização da integral
 
-        // Definindo o número de divisões para a integração numérica (quanto maior, mais preciso)
         int n = 1000;
         double dx = (xFim - xIni) / n;
-
-        // Integração numérica usando o método do retângulo
         for (int i = 0; i < n; i++) {
             double x = xIni + i * dx;
             double r = xPonto - x;
             integral += dx / (r * r);
         }
-
-        // Campo elétrico resultante
         double campoEletrico = k * lambida * integral;
         return campoEletrico;
     }
